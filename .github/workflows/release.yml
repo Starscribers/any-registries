@@ -33,4 +33,4 @@ jobs:
 
     - name: Check package
       run: |
-        uv publish --token ${{ secrets.PYPI_TOKEN }}
+        uv publish --token ${{ secrets.PYPI_API_TOKEN }}

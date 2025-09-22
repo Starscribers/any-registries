@@ -4,7 +4,6 @@ repos:
     hooks:
       - id: trailing-whitespace
       - id: end-of-file-fixer
-        fix: true
       - id: check-yaml
       - id: check-toml
       - id: check-json
@@ -26,6 +25,6 @@ repos:
       - id: bandit
         args: [-c, pyproject.toml]
   - repo: https://github.com/pre-commit/mirrors-mypy
-    rev: ''  # Use the sha / tag you want to point at
+    rev: ''
     hooks:
     -   id: mypy
