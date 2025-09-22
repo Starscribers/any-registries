@@ -4,9 +4,6 @@ on:
   release:
     types: [published]
 
-variables:
-  PYPI_TOKEN: ${{ secrets.PYPI_API_TOKEN }}
-
 jobs:
   build-and-publish:
     runs-on: ubuntu-latest
@@ -36,4 +33,4 @@ jobs:
 
     - name: Check package
       run: |
-        uv publish --token $PYPI_TOKEN
+        uv publish --token ${{ secrets.PYPI_TOKEN }}

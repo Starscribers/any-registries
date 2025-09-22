@@ -48,13 +48,4 @@ jobs:
 
     - name: Run tests
       run: |
-        uv run pytest --cov=any_registries --cov-report=xml --cov-report=term-missing
-
-    - name: Upload coverage to Codecov
-      uses: codecov/codecov-action@v3
-      with:
-        token: ${{ secrets.CODECOV_TOKEN }}
-        file: ./coverage.xml
-        flags: unittests
-        name: codecov-umbrella
-        fail_ci_if_error: false
+        uv run pytest

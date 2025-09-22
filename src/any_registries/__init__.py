@@ -24,9 +24,9 @@ class Registry(Generic[TYPE_KEY, TYPE_TARGET]):
         self.auto_loads = auto_loads or []
         self.key_getter = key
         self.base_path = (
-            os.environ.get("PROJECT_ROOT")
+            base_path
+            or os.environ.get("PROJECT_ROOT")
             or os.environ.get("BASE_DIR")
-            or base_path
             or os.getcwd()
         )
         if not lazy_load:

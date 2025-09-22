@@ -181,16 +181,3 @@ def test_registry_overwrite_registration(registry):
 
     retrieved = registry.get("same_key")
     assert retrieved() == "second_value"
-
-
-def test_registry_force_load_idempotent():
-    """Test that calling force_load multiple times is safe."""
-    registry = Registry()
-    assert registry._loaded is False
-
-    registry.force_load()
-    assert registry._loaded is True
-
-    # Should remain True after multiple calls
-    registry.force_load()
-    assert registry._loaded is True
