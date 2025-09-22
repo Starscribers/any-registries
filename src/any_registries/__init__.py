@@ -3,7 +3,9 @@ from __future__ import annotations
 import os
 from collections.abc import Callable, Iterable
 from pathlib import Path
-from typing import Generic, Self, TypeVar
+from typing import Generic, TypeVar
+
+from typing_extensions import Self
 
 from .exceptions import ItemNotRegistered
 
