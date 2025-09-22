@@ -43,18 +43,6 @@ def test_register_and_get_simple(registry):
     assert retrieved_function() == "test_value"
 
 
-def test_register_multiple_keys(registry):
-    """Test registration with multiple keys."""
-
-    @registry.register(["key1", "key2", "key3"], multiple_keys=True)
-    def multi_key_function():
-        return "multi_value"
-
-    assert registry.get("key1")() == "multi_value"
-    assert registry.get("key2")() == "multi_value"
-    assert registry.get("key3")() == "multi_value"
-
-
 def test_key_getter_function():
     """Test registration using key getter function."""
 
@@ -206,14 +194,3 @@ def test_registry_force_load_idempotent():
     # Should remain True after multiple calls
     registry.force_load()
     assert registry._loaded is True
-
-
-def test_multiple_keys_with_single_key_fails(registry):
-    """Test that multiple_keys=True with single key still works."""
-
-    @registry.register("single_key", multiple_keys=True)
-    def test_func():
-        return "single_key_value"
-
-    # Should still work with single key
-    assert registry.get("single_key")() == "single_key_value"

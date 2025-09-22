@@ -70,22 +70,6 @@ registry = Registry().auto_load("**/handlers/*.py").auto_load("**/processors/*.p
 registry.force_load()
 ```
 
-### Multiple Registration Keys
-
-Register an object with multiple keys:
-
-```python
-@registry.register(["key1", "key2", "key3"], multiple_keys=True)
-def multi_key_function():
-    return "Available under multiple keys"
-
-# All keys point to the same function
-func1 = registry.get("key1")
-func2 = registry.get("key2")
-func3 = registry.get("key3")
-# func1, func2, and func3 are the same function
-```
-
 ### Custom Key Functions
 
 Use a custom function to generate registration keys:
@@ -244,7 +228,6 @@ class Registry(Generic[TYPE_KEY, TYPE_TARGET]):
 
 #### Methods
 
-- `register(key, multiple_keys=False)`: Decorator to register objects
 - `get(key)`: Retrieve a registered object by key
 - `auto_load(*patterns)`: Add patterns for auto-loading modules
 - `force_load()`: Force loading of all auto-load modules

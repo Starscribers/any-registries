@@ -44,7 +44,7 @@ class Registry(Generic[TYPE_KEY, TYPE_TARGET]):
         if not self._loaded and self.auto_loads:
             from importlib import import_module
 
-            modules = []
+            modules: list[Path] = []
             for pattern in self.auto_loads:
                 modules += Path(self.base_path).glob(pattern)
 
@@ -58,15 +58,15 @@ class Registry(Generic[TYPE_KEY, TYPE_TARGET]):
 
     def register(
         self: Self,
-        key: Iterable[TYPE_KEY] | TYPE_KEY | None = None,
-        multiple_keys: bool = False,
+        key: TYPE_KEY | None = None,
     ) -> Callable:
         def registry(target: TYPE_TARGET) -> TYPE_TARGET:
-            if self.key_getter and key is None:
+            if key is None:
+                if self.key_getter is None:
+                    raise ValueError(
+                        "A key or key_getter must be provided for registration."
+                    )
                 self._registry[self.key_getter(target)] = target
-            elif multiple_keys and isinstance(key, Iterable):
-                for k in key:
-                    self._registry[k] = target
             else:
                 self._registry[key] = target
             return target
