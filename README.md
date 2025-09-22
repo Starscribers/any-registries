@@ -329,7 +329,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## Changelog
 
-### Version 0.1.0
+### Version 0.2.0
 - Initial release
 - Basic registry functionality
 - Auto-loading support

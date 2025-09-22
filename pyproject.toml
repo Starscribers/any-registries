@@ -1,6 +1,6 @@
 [project]
 name = "any-registries"
-version = "0.1.0"
+version = "0.2.0"
 description = "A flexible registry system for Python applications with auto-loading capabilities"
 readme = "README.md"
 authors = [
