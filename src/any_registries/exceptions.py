@@ -1,0 +1,2 @@
+class ItemNotRegistered(Exception):
+    pass
